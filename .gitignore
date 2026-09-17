@@ -1,0 +1,42 @@
+# ==============================================================================
+# Git Ignore para Ambiente NS-3.25
+# ==============================================================================
+
+# Arquivos de saída gerados pelas simulações
+*.pcap
+*.tr
+*.cwnd
+*.dat
+*.plt
+*.log
+*.pcap.gz
+
+# Capturas e rastreamentos no workspace
+workspace/*-output*.xml
+workspace/*-output*.pcap
+workspace/*.pcap
+workspace/*.tr
+workspace/*.cwnd
+workspace/*.dat
+workspace/*.plt
+
+# Artefatos intermediários de compilação do NetAnim (Qt)
+workspace/netanim/*.o
+workspace/netanim/moc_*.cpp
+workspace/netanim/moc_*.o
+workspace/netanim/qrc_*.cpp
+workspace/netanim/qrc_*.o
+workspace/netanim/*.moc
+workspace/netanim/.qmake.stash
+
+# Arquivos temporários do sistema e editores
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+*.bak
+.idea/
+.vscode/ipch/
+.vscode/.cmaketools/
+.history/

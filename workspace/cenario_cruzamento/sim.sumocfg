@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ==============================================================================
+  sim.sumocfg - Arquivo Central de Configuração da Simulação no SUMO
+  ==============================================================================
+  Este arquivo é o ponto de entrada executável do SUMO. Ele reúne:
+    1. A malha viária (<net-file>): map.net.xml
+    2. As rotas e veículos (<route-files>): routes.rou.xml
+    3. Elementos do cenário (<additional-files>): obstaculos.poly.xml (prédios e antena)
+    4. Parâmetros temporais da simulação (<time>)
+  ==============================================================================
+-->
+
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <!-- ======================================================================= -->
+    <!-- 1. ARQUIVOS DE ENTRADA                                                  -->
+    <!-- ======================================================================= -->
+    <input>
+        <!-- Malha viária gerada pelo netconvert -->
+        <net-file value="map.net.xml" />
+
+        <!-- Rotas e definição dos veículos autônomos -->
+        <route-files value="routes.rou.xml" />
+
+        <!-- Prédios (barreiras NLoS) e Antena (POI / infraestrutura) -->
+        <additional-files value="obstaculos.poly.xml" />
+    </input>
+
+    <!-- ======================================================================= -->
+    <!-- 2. CONTROLE TEMPORAL DA SIMULAÇÃO                                       -->
+    <!-- ======================================================================= -->
+    <time>
+        <!-- Início da simulação em segundos -->
+        <begin value="0" />
+
+        <!-- Fim da simulação em segundos (duração suficiente para os carros cruzarem) -->
+        <end value="30" />
+
+        <!--
+          Passo de tempo da simulação (step-length):
+          0.1 segundos (10 Hz). Ideal para geração de traços de mobilidade
+          suaves e precisos para o NS-3 (Ns2MobilityHelper).
+        -->
+        <step-length value="0.1" />
+    </time>
+
+    <!-- ======================================================================= -->
+    <!-- 3. PROCESSAMENTO E SEGURANÇA                                            -->
+    <!-- ======================================================================= -->
+    <processing>
+        <!-- Emite aviso nos logs caso ocorra colisão geométrica -->
+        <collision.action value="warn" />
+        <time-to-teleport value="-1" />
+    </processing>
+
+    <!-- ======================================================================= -->
+    <!-- 4. CONFIGURAÇÕES VISUAIS (GUI)                                          -->
+    <!-- ======================================================================= -->
+    <gui_only>
+        <!-- Inicia pausado para você poder ajustar zoom e apertar Play quando quiser -->
+        <start value="false" />
+        <quit-on-end value="false" />
+    </gui_only>
+
+</configuration>

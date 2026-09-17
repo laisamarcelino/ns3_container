@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ==============================================================================
+  edges.edg.xml - Definição dos Segmentos de Vias (Arestas) no SUMO
+  ==============================================================================
+  No SUMO, uma "aresta" (edge) é uma via direcionada que conecta um nó de origem
+  (from) a um nó de destino (to).
+
+  Conceitos Fundamentais:
+    1. Direcionalidade: Cada edge possui sentido único de fluxo (de 'from' até 'to').
+       Para criar uma rua de mão dupla, definimos dois edges com nós invertidos.
+    2. Segmentação em Cruzamentos: As ruas são divididas pelo cruzamento central (mid):
+       - Trecho de aproximação (ex: west -> mid)
+       - Trecho de saída (ex: mid -> east)
+       Isso permite que o SUMO gerencie as conexões internas, conversões e prioridades.
+    3. Atributos:
+       - id: Nome único do segmento viário.
+       - from: Nó inicial de onde o tráfego parte.
+       - to: Nó final onde o segmento termina.
+       - numLanes: Quantidade de faixas de rolamento por sentido.
+       - speed: Velocidade máxima permitida em METROS POR SEGUNDO (m/s).
+                Exemplo: 13.89 m/s ≈ 50 km/h (velocidade urbana típica).
+  ==============================================================================
+-->
+
+<edges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/edges_file.xsd">
+
+    <!-- ======================================================================= -->
+    <!-- CORREDOR HORIZONTAL (OESTE <-> LESTE)                                   -->
+    <!-- Utilizado principalmente pelo CARRO 1 (Oeste para Leste)                -->
+    <!-- ======================================================================= -->
+
+    <!-- Sentido Oeste -> Leste (Aproximação e Saída) -->
+    <!-- Trecho 1: Da extremidade Oeste até o centro do cruzamento -->
+    <edge id="eastbound1" from="west" to="mid" numLanes="1" speed="13.89" />
+
+    <!-- Trecho 2: Do centro do cruzamento até a extremidade Leste -->
+    <edge id="eastbound2" from="mid" to="east" numLanes="1" speed="13.89" />
+
+    <!-- Sentido Leste -> Oeste (Mão contrária para via de sentido duplo) -->
+    <!-- Trecho 1: Da extremidade Leste até o centro do cruzamento -->
+    <edge id="westbound1" from="east" to="mid" numLanes="1" speed="13.89" />
+
+    <!-- Trecho 2: Do centro do cruzamento até a extremidade Oeste -->
+    <edge id="westbound2" from="mid" to="west" numLanes="1" speed="13.89" />
+
+
+    <!-- ======================================================================= -->
+    <!-- CORREDOR VERTICAL (SUL <-> NORTE)                                       -->
+    <!-- Utilizado principalmente pelo CARRO 2 (Sul para Norte)                  -->
+    <!-- ======================================================================= -->
+
+    <!-- Sentido Sul -> Norte (Aproximação e Saída) -->
+    <!-- Trecho 1: Da extremidade Sul até o centro do cruzamento -->
+    <edge id="northbound1" from="south" to="mid" numLanes="1" speed="13.89" />
+
+    <!-- Trecho 2: Do centro do cruzamento até a extremidade Norte -->
+    <edge id="northbound2" from="mid" to="north" numLanes="1" speed="13.89" />
+
+    <!-- Sentido Norte -> Sul (Mão contrária para via de sentido duplo) -->
+    <!-- Trecho 1: Da extremidade Norte até o centro do cruzamento -->
+    <edge id="southbound1" from="north" to="mid" numLanes="1" speed="13.89" />
+
+    <!-- Trecho 2: Do centro do cruzamento até a extremidade Sul -->
+    <edge id="southbound2" from="mid" to="south" numLanes="1" speed="13.89" />
+
+</edges>

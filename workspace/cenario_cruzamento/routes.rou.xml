@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ==============================================================================
+  routes.rou.xml - Definição dos Veículos Autônomos e suas Rotas no SUMO
+  ==============================================================================
+  Neste arquivo definimos:
+    1. O tipo de veículo (<vType>): Características físicas, aceleração,
+       desaceleração e o modelo de direção (autônomo / sigma=0).
+    2. As rotas (<route>): Sequência ordenada de arestas (edges) que cada carro percorre.
+    3. Os veículos (<vehicle>): Instâncias reais com identificador, cor,
+       horário de partida (depart) e rota associada.
+  ==============================================================================
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- ======================================================================= -->
+    <!-- 1. TIPO DE VEÍCULO: CARRO AUTÔNOMO                                      -->
+    <!-- ======================================================================= -->
+    <!--
+      Atributos:
+        - id: Nome do modelo ("carro_autonomo").
+        - accel="2.6": Taxa de aceleração padrão em m/s².
+        - decel="4.5": Taxa de desaceleração suave em m/s².
+        - emergencyDecel="9.0": Desaceleração máxima de emergência em m/s².
+        - length="4.5": Comprimento físico do carro em metros.
+        - maxSpeed="13.89": Velocidade máxima (13.89 m/s ≈ 50 km/h).
+        - sigma="0.0": Imperfeição do motorista (0.0 = condução autônoma perfeita,
+          determinística e sem variações humanas).
+        - guiShape="passenger": Desenha a silhueta gráfica de carro de passeio no visualizador.
+    -->
+    <vType id="carro_autonomo"
+           accel="2.6"
+           decel="4.5"
+           emergencyDecel="9.0"
+           length="4.5"
+           maxSpeed="13.89"
+           sigma="0.0"
+           guiShape="passenger" />
+
+
+    <!-- ======================================================================= -->
+    <!-- 2. DEFINIÇÃO DAS ROTAS (SEQUÊNCIA DE EDGES)                             -->
+    <!-- ======================================================================= -->
+
+    <!--
+      Rota Horizontal: Parte de 'west', passa por 'mid' e vai até 'east'.
+      Edges envolvidos: eastbound1 (aproximação) -> eastbound2 (saída).
+    -->
+    <route id="rota_oeste_leste" edges="eastbound1 eastbound2" />
+
+    <!--
+      Rota Vertical: Parte de 'south', passa por 'mid' e vai até 'north'.
+      Edges envolvidos: northbound1 (aproximação) -> northbound2 (saída).
+    -->
+    <route id="rota_sul_norte" edges="northbound1 northbound2" />
+
+
+    <!-- ======================================================================= -->
+    <!-- 3. INSTANCIAÇÃO DOS VEÍCULOS                                            -->
+    <!-- ======================================================================= -->
+
+    <!--
+      CARRO 1 (Transmissor / Veículo Oeste):
+        - id="carro_1": Identificador que será mapeado para o Nó 0 no NS-3.
+        - depart="0.0": Entra na simulação imediatamente em t = 0 segundos.
+        - color="0,120,255": Cor Azul na interface visual.
+        - departSpeed="10.0": Já entra na via em velocidade de 10 m/s (36 km/h).
+    -->
+    <vehicle id="carro_1"
+             type="carro_autonomo"
+             route="rota_oeste_leste"
+             depart="0.0"
+             departSpeed="10.0"
+             color="0,120,255" />
+
+    <!--
+      CARRO 2 (Receptor / Veículo Sul):
+        - id="carro_2": Identificador que será mapeado para o Nó 1 no NS-3.
+        - depart="0.0": Entra na simulação em t = 0 segundos.
+        - color="255,140,0": Cor Laranja na interface visual.
+        - departSpeed="10.0": Já entra na via em velocidade de 10 m/s (36 km/h).
+    -->
+    <vehicle id="carro_2"
+             type="carro_autonomo"
+             route="rota_sul_norte"
+             depart="0.0"
+             departSpeed="10.0"
+             color="255,140,0" />
+
+</routes>

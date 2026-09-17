@@ -1,0 +1,15 @@
+[SETTINGS]
+maximized=1
+width=1920
+x=0
+y=37
+basedir=
+height=1043
+
+[Recent Files]
+FILE1=/workspace/cenario_cruzamento/sim.sumocfg
+
+[gui]
+timeasHMS=0
+alternateSimDelay=100
+

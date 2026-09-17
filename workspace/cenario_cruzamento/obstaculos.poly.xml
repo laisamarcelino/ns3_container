@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ==============================================================================
+  obstaculos.poly.xml - Prédios (Barreiras de Sinal) e Antena Perfeitamente Alinhados
+  ==============================================================================
+  Geometria do Cruzamento:
+    - O centro da interseção fica em (x = 100.0, y = 100.0).
+    - As vias ocupam a faixa de x ∈ [96.8, 103.2] e y ∈ [96.8, 103.2].
+    - Os 4 quarteirões ao redor do cruzamento são delimitados simetricamente:
+        * Esquina Sudoeste: x ∈ [40.0, 88.0],   y ∈ [40.0, 88.0]
+        * Esquina Noroeste: x ∈ [40.0, 88.0],   y ∈ [112.0, 160.0]
+        * Esquina Sudeste:  x ∈ [112.0, 160.0], y ∈ [40.0, 88.0]
+        * Esquina Nordeste: x ∈ [124.0, 160.0], y ∈ [124.0, 160.0] (recuado)
+
+  Posicionamento Estratégico:
+    - PRÉDIO SUDOESTE: Fica exatamente entre a aproximação Oeste (Carro 1)
+      e a aproximação Sul (Carro 2), garantindo bloqueio total de linha de visada (NLoS).
+    - ANTENA (RSU / RIS): Fica perfeitamente na calçada da esquina Nordeste (112.0, 112.0),
+      com visão 100% livre para ambos os corredores viários.
+  ==============================================================================
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+
+    <!-- ======================================================================= -->
+    <!-- 1. QUARTEIRÕES / PRÉDIOS URBANOS (POLÍGONOS)                            -->
+    <!-- ======================================================================= -->
+
+    <!--
+      PRÉDIO 1: ESQUINA SUDOESTE (A BARREIRA CRÍTICA DE BLOQUEIO NLoS)
+      Bloqueia a linha reta entre o Carro 1 (vindo do Oeste) e o Carro 2 (vindo do Sul).
+    -->
+    <poly id="predio_bloqueio_sudoeste"
+          type="building"
+          color="70,70,70"
+          fill="1"
+          layer="1"
+          shape="40.0,88.0 88.0,88.0 88.0,40.0 40.0,40.0" />
+
+    <!--
+      PRÉDIO 2: ESQUINA NOROESTE
+      Edifício da esquina superior esquerda.
+    -->
+    <poly id="predio_noroeste"
+          type="building"
+          color="100,100,100"
+          fill="1"
+          layer="1"
+          shape="40.0,160.0 88.0,160.0 88.0,112.0 40.0,112.0" />
+
+    <!--
+      PRÉDIO 3: ESQUINA SUDESTE
+      Edifício da esquina inferior direita.
+    -->
+    <poly id="predio_sudeste"
+          type="building"
+          color="100,100,100"
+          fill="1"
+          layer="1"
+          shape="112.0,88.0 160.0,88.0 160.0,40.0 112.0,40.0" />
+
+    <!--
+      PRÉDIO 4: ESQUINA NORDESTE (RECUADO)
+      Recuado 12 metros em relação à esquina para deixar espaço para a praça/antena.
+    -->
+    <poly id="predio_nordeste"
+          type="building"
+          color="100,100,100"
+          fill="1"
+          layer="1"
+          shape="124.0,160.0 160.0,160.0 160.0,124.0 124.0,124.0" />
+
+
+    <!-- ======================================================================= -->
+    <!-- 2. ANTENA DE INFRAESTRUTURA / RIS (PONTO DE INTERESSE - POI)            -->
+    <!-- ======================================================================= -->
+
+    <!--
+      ANTENA DE ESQUINA (RSU / RIS):
+        - Localizada na quina da calçada Nordeste: x = 112.0, y = 112.0.
+        - Perfeitamente alinhada na esquina em frente ao cruzamento.
+        - Cor dourada brilhante (255, 215, 0) com tamanho de 4x4 metros.
+    -->
+    <poi id="antena_ris_esquina"
+         type="antenna"
+         color="255,215,0"
+         layer="2"
+         x="112.0"
+         y="112.0"
+         width="4.0"
+         height="4.0" />
+
+</additional>

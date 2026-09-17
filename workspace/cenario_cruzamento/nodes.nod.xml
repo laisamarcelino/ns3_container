@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ==============================================================================
+  nodes.nod.xml - Definição dos Nós (Vértices) da Rede Viária no SUMO
+  ==============================================================================
+  Sistema de Coordenadas:
+    - O cruzamento central (mid) fica perfeitamente centrado em (100.0, 100.0).
+    - As vias se estendem 100 metros para cada direção cardeal:
+        * West (Oeste):  (0.0, 100.0)   - Entrada do Carro 1
+        * East (Leste):  (200.0, 100.0) - Saída do Carro 1
+        * South (Sul):   (100.0, 0.0)   - Entrada do Carro 2
+        * North (Norte): (100.0, 200.0) - Saída do Carro 2
+  ==============================================================================
+-->
+
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/nodes_file.xsd">
+
+    <!-- Nó Central (Cruzamento) -->
+    <node id="mid" x="100.0" y="100.0" type="priority" />
+
+    <!-- Extremidades dos 4 Braços do Cruzamento -->
+    <node id="west" x="0.0" y="100.0" type="priority" />
+    <node id="east" x="200.0" y="100.0" type="priority" />
+    <node id="south" x="100.0" y="0.0" type="priority" />
+    <node id="north" x="100.0" y="200.0" type="priority" />
+
+</nodes>

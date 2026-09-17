@@ -1,0 +1,15 @@
+services:
+  ns3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ns3-25:latest
+    container_name: ns3-25-container
+    volumes:
+      - ./workspace:/workspace
+      - ./workspace/vlc:/opt/ns-allinone-3.25/ns-3.25/src/vlc
+      - ./Makefile:/opt/ns-allinone-3.25/ns-3.25/Makefile
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    command: /bin/bash
