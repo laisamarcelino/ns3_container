@@ -1,0 +1,45 @@
+===============================================================================
+      RELATÓRIO DE COMUNICAÇÃO VEICULAR NO CENÁRIO DE CRUZAMENTO (NS-3 / SUMO) 
+===============================================================================
+
+1. VERIFICAÇÃO DE MENSAGENS (DIRETO CARRO-A-CARRO vs. CARRO-A-ANTENA):
+-------------------------------------------------------------------------------
+  • Mensagens DIRETO de Carro para Carro (V2V em LoS): 10
+  • Mensagens de Carro para Antena (V2I assistido por RIS em NLoS): 3
+  • Tentativas em que o veículo esteve Sem Sinal (NLoS fora da RIS): 2
+  • Total de ciclos de transmissão: 15
+
+2. ANÁLISE TEMPORAL (TEMPO SEM SINAL vs. TEMPO SE COMUNICANDO):
+-------------------------------------------------------------------------------
+  • Duração total do deslocamento veicular: 15.90 s
+  • Tempo em que o carro anda SEM SINAL (desconectado): 2.00 s (12.58% do tempo)
+  • Tempo em que o carro passa SE COMUNICANDO (ativo): 13.00 s (81.76% do tempo)
+
+3. INSTANTE DE ATIVAÇÃO DA ANTENA RIS:
+-------------------------------------------------------------------------------
+  • Instante em que o RIS começa a funcionar: t = 3.00 s
+  • Descrição: A partir deste instante, os dois veículos entram no raio de
+    cobertura útil da RIS (75.00 m) e a RIS redireciona os sinais
+    contornando o prédio até que os veículos alcancem linha de visada direta.
+
+===============================================================================
+4. HISTÓRICO SEGUNDO A SEGUNDO DA SIMULAÇÃO:
+===============================================================================
+Tempo(s)  Pos Carro 1       Pos Carro 2       Dist V2V(m)   Dist RIS(m)   Visada V2V      Estado / Modo   
+------------------------------------------------------------------------------------------------
+1.0       (14.8,98.4)       (101.6,14.8)      120.6         98.2          NLoS (Prédio)  SEM_SINAL       
+2.0       (28.3,98.4)       (101.6,27.7)      101.8         84.9          NLoS (Prédio)  SEM_SINAL       
+3.0       (42.2,98.4)       (101.6,40.8)      82.8          72.0          NLoS (Prédio)  VIA_ANTENA_RIS  
+4.0       (56.1,98.4)       (101.6,53.8)      63.7          59.1          NLoS (Prédio)  VIA_ANTENA_RIS  
+5.0       (69.9,98.4)       (101.6,66.8)      44.7          46.4          NLoS (Prédio)  VIA_ANTENA_RIS  
+6.0       (82.0,98.4)       (101.6,79.9)      27.0          33.8          LoS (Livre)     V2V_DIRETO      
+7.0       (89.6,98.4)       (101.6,92.9)      13.2          26.2          LoS (Livre)     V2V_DIRETO      
+8.0       (96.1,98.4)       (101.6,105.9)     9.3           20.9          LoS (Livre)     V2V_DIRETO      
+9.0       (104.9,98.4)      (101.6,118.9)     20.8          15.3          LoS (Livre)     V2V_DIRETO      
+10.0      (116.4,98.4)      (101.6,132.0)     36.7          22.5          LoS (Livre)     V2V_DIRETO      
+11.0      (130.0,98.4)      (101.6,145.0)     54.6          34.6          LoS (Livre)     V2V_DIRETO      
+12.0      (143.9,98.4)      (101.6,158.0)     73.1          47.2          LoS (Livre)     V2V_DIRETO      
+13.0      (157.8,98.4)      (101.6,171.1)     91.8          60.0          LoS (Livre)     V2V_DIRETO      
+14.0      (171.7,98.4)      (101.6,184.1)     110.7         72.8          LoS (Livre)     V2V_DIRETO      
+15.0      (185.5,98.4)      (101.6,197.1)     129.6         85.8          LoS (Livre)     V2V_DIRETO      
+================================================================================================
